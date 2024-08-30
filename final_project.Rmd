@@ -1,0 +1,640 @@
+---
+title: "MIS431 - Final Project"
+output: pdf_document
+---
+
+
+
+
+# 1. Introduction
+
+In this report, we are performing an analysis for LendingClub as to which factors they should choose when approving a three-year loan to their customers. We will be analyzing LendingClubs various variables in order to guide them in the right direction using Exploratory Analysis and Machine Learning models. The issue we are attempting to figure out for LendingClub is what exactly might be causing borrowers to default on their loans; And how we can help Lending Club pinpoint the best explanitory variables to make their decision on approving a loan. The importance of this report will be shown in this report, for which our analysis can save LendingClub a lot of money from preventing in giving out risky loans.
+
+Before we dive into the report, these are the questions we have asked ourselves and are going to be answering in the Exploratory Data Analysis section.
+
+1.) What is the distribution of the Debt-to-Income ratio when organized by NotFullyPaid and CreditPolicy?
+
+2.) What are the basic metrics of the Debt to Income ratio based on CreditPolicy and NotFullyPaid?
+
+3.) What is the relationship between ones Fico Credit Score and the Interest Rate that they are charged?
+
+4.) What sort of insights can you get with summary statistics on grouped CreditPolicy and NotFullyPaid variables?
+
+5.) What is the distribution of the level of delinquency on payment?
+
+6.) Which category of loan purposes have the highest customer average grouped by NotFullyPaid?
+
+These questions are an important part of our analysis and we will prove why they matter in order to make a better decision in the loan approval process.
+
+
+# 2. Exploratory Data Analysis
+
+## 2.1) Effect of meeting requirements to Debt/Income ratio
+
+What is the distribution of the Debt-to-Income ratio when organized by NotFullyPaid and CreditPolicy?
+
+### Data
+
+In this section, based on Figure 1, we are using Debt to Income ratios grouped by loans that are not fully paid and meeting of credit policy. The reason why we chose these variables is because we would like to see the distribution of the Debt-Income ratios across the two categories of NotFullyPaid and MeetsRequirements.
+
+### Method
+
+In order to extract full insights from this data, we convert the binary variables into text variables. From there, this allows simplicity in building the chart as it is less confusing as seeing 0's and 1's. Additionally one can interpret the graph more clearly as shown in Figure 1.
+
+### Analysis
+
+From Figure 1, we can clearly see the distribution of the Debt/Income ratios across the chosen categories. The distribution in Meets Requirements and Fully Paid loans shows the largest distribution for payback values. The data is not quite normally distributed however, as the left half of it looks like a cosine wave. It does have somewhat of a right skewedness to it though. Additionally, the other categories do not have nearly as high of a distribution.
+
+### Results
+
+It comes as no surprise that the data in Figure 1 only shows large distribution values for those who pay off their loans and meet credit requirements. These customers are the ones who are likely to get approved for their next loan since they have a good payoff history. For those in the other three categories shown in Figure 1, they prove that they are not responsible in paying off their debt and should not be approved for another loan as the low distribution numbers show. The primary importance of this chart for LendingClub is that they can see patterns in which customers will have a greater chance of paying off their loans.
+
+## 2.2) Metric Ratings of Credit Policy and Payback
+
+What are the basic metrics of the Debt to Income ratio based on CreditPolicy and NotFullyPaid?
+
+### Data
+
+We now look at Table 1 in order to get insights as to what the Debt to Income ratio metrics will be. The reasoning behind this table is to showcase if there is a possible confidence interval of each category which may help explain NotFullyPaid customers. 
+
+### Method
+
+In order to create this table, we group the data by credit policy and not fully paid. We then calculate the summary statistics giving us the average debt to income ratio and the standard deviation of the debt to income ratio based on the two grouped categories. We convert the two categories dummy variables to clear text labels which allows us to view the table efficiently.
+
+### Analysis
+
+Table 1 shows us the general idea as to how current decisions are made in regards to allowing approval for a customers loan based on the Debt to Income ratio. The average DTI ratio for those who meet requirements and fully pay off their loan is 12.23. 6696 customers from the database fall in this category. For those who meet requirements but do not pay off their loan have a slightly higher DTI ratio of 12.73. For the categories Doesn't Meet Requirements, the ones that fully pay their loans have an average DTI of 13.79. Those who do not fully pay off their loan have an average DTI of 14.10.
+
+### Results
+
+Table 1 shows us that those who do not meet requirements tend to have a higher Debt to Income ratio. Additionally, they have a higher standard deviation as well. It makes sense that the ones who do not meet CreditPolicy requirements have higher DTI ratios because they most likely borrow money to payoff money or something of that sort. This dataset however shows us that the lowest average DTI ratio in the table to be the ones who fully pay off their loans and meet credit requirements. This is important to LendingClub because they can see which borrowers with a particular Debt/Income ratio will have a greater chance of paying their loans off.
+
+
+## 2.3) Relationship between Fico Score and Interest Rates
+
+What is the relationship between ones Fico Credit Score and the Interest Rate that they are charged?
+
+### Data
+
+Figure 2 shows us the relationship between Fico Credit Score and Interest Rate. The reasoning behind this is to study the relationship between the two categroies and see if their relationship is similar or different. Additionally we would like to showcase how high the Interest Rate goes based on ones Fico Credit Score. 
+
+### Method
+
+In Figure 2, we set the X-axis to be equal to the Fico Credit Score and the Y-axis equal to the charged Interest Rate. Figure 2 is 
+then split amongst the categories of loans not fully paid off, with "No" being fully paid and "Yes" being unpaid. 
+
+### Analysis
+
+We can observe that those who have not fully paid off their loans, and those that have show similar relationships. The key difference is that there are many more points in the plot regarding those that have paid off their loans. The data in those who have fully paid off their loans are skewed more towards the left, including some outliers who get approved for very low interests even though they have a credit score under 700. For those who do not pay off their loans fully, their data is skewed more towards the right where there are not as many of those who get lower interest rates.
+
+### Results
+
+Both graphs in Figure 2 have a negative linear relationship as expected. The higher the credit score, the lower the interest rate regardless of being able to pay back the debt. This may be something to look at in your approval process as there should be a general higher interest rate for those who do not fully pay off their previous loans. This chart is important to LendingClub because it will show them a conformation that Fico Scores and Interest Rates are negatively correlated.
+
+
+## 2.4) Credit Policy Metrics
+
+What sort of insights can you get with summary statistics on grouped CreditPolicy and NotFullyPaid variables?
+
+### Data
+
+We showcase Table 2 in order to see the average fico score and the average interest rate grouped together and test there to be any possible relationships between the two. Additionally we are looking to extract any insights as to which criteria is the best to follow.
+
+### Method
+
+After the data is grouped for the two categories, we calculate the average Fico score and the average interest rate charged. We group them in Table 2 to show a clear relationship between the variables, along with naming our dummy variables into categorical variables.
+
+### Analysis
+
+From Table 2, we can see that the average Fico credit score for individuals who meet credit policy criteria to be 719. Additionally the table shows us that this category of customers have the lowest average interest rate with a value of 11.73%, which is the lowest on the chart. Those who meet criteria but do not fully pay off thier loan have a lower average credit score and a higher average interest rate at 12.8%. The customers who do not meet the credit policy criteria have even lower credit scores less than 690 and higher average interest rates.
+
+### Results
+
+In Table 2, we learn that those who pay off their loans on time will on average have a lower interest rate and a higher credit score. Those who do not pay off thier loans will be given a higher average interest rate and a lower credit score. The best insights from this model is to follow the credit policy category in deciding on whether to approve or not approve a loan. This table is important to LendingClub because it will give them a good guide as to what level of Fico credit score they should be willing to accept in order to approve the customer.
+
+
+## 2.5) Analysis of Delinquency on Payment
+
+What is the distribution of the level of delinquency on payment?
+
+### Data
+
+In Figure 3, we showcase data on the delinquency on payment and those who pay off their loans vs. those who do not. The goal of Figure 3 is to provide insights as to which purpose of taking on the debt is the best category for approval.
+
+### Method
+
+The data shown in Figure 3 is plotted based on the different purposes of the debt. The data is organized by its X-axis being the level of delinquency (the number of times the borrower has been 30+ days past due on a payment for the past two years) and the Y-Axis is the number of total delinquent customers in each category. The data is plotted into box plots in order to gain insights of the distribution.
+
+### Analysis
+
+All_Other and Debt_Consolidation and Credit_Card have the highest count for delinquencies being that they have paid off their loans. Additionally, these two variables have the highest numbers of fail to payoff in a 30 day period past due. The rest of the categories have lower amounts of unpaid off loans for 30 days, with a lower count of delenquencies. The educational category has the lowest amount of the number of times that they have been 30+ days past due.
+
+### Results
+
+Those with higher levels of being past due for 30+ days have the highest count of delinquencies. This is a good reasoning because it makes sense that those who do not pay off their loans are unlikely to be less delinquent. Categories such as educational, home_improvent, major_purchase, and small_business are all of the categories who do not have a high level of being past due. It is explainable that these categories have a lower level of delinquency. This chart serves as an important indicator to LendingClub on what loans to approve to a customer based on their missed payoff history.
+
+
+## 2.6) Summary of each credit purpose
+
+Which category of loan purposes have the highest customer average grouped by NotFullyPaid?
+
+### Data
+
+In Table 3, we showcase our NotFullyPaid loans along with the purpose of taking out a loan. This table is designed to show any trends between the categories presented in order to extract an insightful relationship and to figure out which category is the highest.
+
+### Method
+
+Table 3 was built to showcase how many customers are approved for a loan based on their NotFullyPaid and Credit Purpose categories. The columns are grouped by NotFullyPaid and Purpose. Additonally, the average number of customers is calculated using the mean function for each group presented.
+
+### Analysis
+
+In the category No for Not Fully Paid, we see that the highest approved customers are on average 335 for debt consolidation and all other variables. The lowest approved are for educational, home_improvement, major_purchase, and small_business. In the category with Yes for Not Fully Paid we see that debt consolidation holds the crown for the highest average customers approved. The rest of the variables however do not have a high approval average.
+
+### Results
+
+Using Table 3, our question for this section can be answered as debt consolidation being the highest average approval for those categories. Debt consolidation lump sums your credit into a single payment, which shows the true meaning of this data. It makes sense for people who want to erase their debt in one fail swoop. Debt consolidation additionally has the highest average customers approved for those who have not fully paid off their loans. This table is valuable to LendingClub because it will show them which categories they have approved based on debt purpose, which they can then tune to their future customers.
+
+
+# 3. ML Model Building Exercise
+
+### ML Metrics Table
+```{r}
+data.frame(ModelUsed=c("LogReg","QDA","KNN"), F1Measure=c(0.7451,0.6681,0.7856),AUC_ROC=c(0.6452,0.6355,0.5744),Precision=c(0.8857,0.8899,0.8576), Sensitivity=c(0.6431,0.5348,0.7247), Specificity=c(0.6431,0.6536,0.3698))
+```
+### Methods Explained
+
+The Logistic Regression is an algorithm which splits the data into two categories. The Quadratic Discriminant Analysis (QDA) groups the data in order to find the optimal clusters to effectively classify if one is able to be approved for a loan. The KNN is a model which gathers values that are near a calculated point and groups them into clusters using the distance formula in order to classify the loan customer.
+
+
+### F1-Measure Score
+
+Based on our F1 measure, the perfect model to classify those who pay off their loans and those that do not is the KNN algorithm. The KNN algorithm has the highest F1-Measure, which is a statistic that tells how much the overall performance is; The F1-Measure is between 0 and 1. The Logistic Regression model comes in second place and the QDA model comes in third place. So far the KNN has the best performance based on the F1 score.
+
+### Area under ROC Curve / ROC Curve
+
+In terms of the grade calculated via the ROC curve area, the Logistic Regression model has the highest grade while the KNN model has the lowest grade. What this means is that in this section, the Logistic Regression model has the highest performance in terms of classifying loans that are not fully paid. In terms of the grade for all three models, LogReg and QDA's grades are under 0.70 so they both recieve a "D" grade rating while the KNN recieves an F rating since its grade is lower than 0.6.
+
+When taking a look at the plots of the ROC Curve, the QDA model has the best ROC curve as its curve has the highest slope and highest specificity, meaning that it will have the highest area and highest grade of a B. Second comes the Logistic Regression model which also earns a B, and third comes in the KNN model which also earns a B.
+
+### Confusion Matrix
+
+The sensitivity metric tells us how good a test is at detecting positives. The sensitivity score for the KNN model has the highest sensitivity out of the three models. What this means is that the KNN model is highly accurate at detecting positives, which in this case are those who have not paid off their loans. The Logistic Regression model comes in second and the KNN model comes in third. 
+
+The specificity test is a test which is good at avoiding false alarms. The KNN model does not perform as well in the specificity category. The QDA model takes the crown for having the highest specificity rate. The Logistic Regression model comes in second and the KNN model comes in third.
+
+The precision test is a test which shows how many positively classified were relevant. The table shows us that all of the models have a similar precision level give or take a few decimal places. All of the models work correctly in making sure that everything in the calculations is relevant. In terms of ranking them, QDA comes first, Logistic Regression comes in second, and the KNN comes in third.
+
+
+### VIP Interpretations
+
+As shown in the Logistic Regression VIP Graph, the most important explanitory variables we have generated are LogAnnualIncome and Purpose_credit_card. These two variables take up most of the data required to make an accurate prediction. However, we did not choose these as we feel that the LogAnnualIncome serves as a good predictor because the logarithm scale throws our data off. The Purpose variable however is shown in Figure 3 as an accurate measure of classifying approved loans and non-approved loans.
+
+### Model Recommendations
+
+Based on our results shown with our three models, the best model to use for deciding on whether to approve or disapprove a customers loan application is the KNN model. The reason why is due to the fact that the area under the ROC curve is invalid as all three models scored a D or F in them. The KNN has the highest F1 score (think of R^2) and the highest Sensitivity score. However, since the dataset is larger, it is optimal to use the Logistic Regression model instead.
+
+
+# 4. Recommendations
+
+In response to LendingClub's first question, based on the data examined in this report, we would highly recommend that you take a look at the variables Debt/Income ratio, Credit Policy, and Delenquency. These three variables would serve well in your consideration as to approve or disapprove their loan. Additionally, you should take a look at Log Annual Income and Purpose_credit_card since they are highly ranked in our VIP model. These variables are shown to be the most significant variables in our KNN Model as effective methods to use for classification of the loan non-paid and paid customers. Unfortunately we do not have a method to view the best variables in the QDA and KNN models. This is a good recommendation because you now have an insight as to which variables are most effective. This section will benefit LendingClub in a way that their business can be impacted knowing the correct method to classify a loan.
+
+In response to LendingClub's second question, the best model use to classify NotFullyPaid effectively, we recommend using the KNN. It has the greatest F1 score. Since the Logistic Regression model does not have the highest sensitivity, but has a specificity and precision, you may want to take a look at the Logistic Regression model depending on your requirements. This is a good recommendation to you because you can now maybe even add additional categories you wish to test and you will get the most accurate result from the Logistic Regression model since you have a large dataset. This will also benefit the business because it will allow them to access machine learning while their competitors may not be so technical.
+
+
+
+# 5. Conclusion
+
+In conclusion, we hope you will take the listed variables into consideration when faced with approving or disapproving a customers loan application. The data your team provided has had much insights inside it. Some of the variables may not be as best at using them in a different scenario, but our overall report overcame those challenges. Now we will dive into a summary of both our explanatory section and our machine learning section.
+
+When we picked our variables to generate the tables and charts located in Appendix/Appendices, it required great intuition as to select which variables made most sense in gaining insights from the patterns in it. The selection process took great analytical thinking and common sense. We did not know at first if it would have generated us those beautiful charts, that was the selection process. We believe that out of Figure 1, 2, & 3, Figure 3 showcases the best metrics in the boxplot because it takes into account the type of loan (i.e. CreditCard, Debt Consolidation, and Home Improvement).
+
+In terms of gathering the right steps to execute our Machine Learning model, we were able to use all of the variables in the dataset. The most valuable variables we found were LogAnnualIncome, InquiriesLast6Months, Debt/Income ratio, CreditPolicy, and Purpose. These several variables will give you a great insight as to what criteria you wish to set for approving or disapproving a loan.
+
+Overall the initial analysis held very well in our report. The questions we asked proved to be important ones which the Figures and Tables in the appendix section greatly emphasized. The tests we ran on our classification models also proved to point LendingClub in the correct direction. We hope that you use the recommended variables and models highlighted in our report in order to have the best approval criteria for the NotFullyPaid section of the dataset. We thank you for reading our report and hope that it will prevent you from giving a delinquent debt non-paying client a loan.
+
+
+
+# 6.	Appendix/Appendices
+
+```{r warning = FALSE, message = FALSE}
+## Add R libraries here
+library(tidyverse)
+library(tidymodels)
+library(ggplot2)
+library(dplyr)
+library(discrim)
+library(skimr)
+library(klaR)
+library(kknn)
+library(vip)
+library(themis)
+
+
+# Load data
+loans_df <- read_csv("/cloud/project/Datasets/Loans.csv") %>%
+  mutate(NotFullyPaid = as.factor(if_else(NotFullyPaid == 1,"Yes","No")))
+
+```
+
+## Visuals
+```{r}
+# Creating a table named payback based on CreditPolicy, NotFullyPaid, and Debt to Income Ratio
+payback <- loans_df %>%
+  mutate(CreditPolicy=factor(CreditPolicy, levels=c(1, 0), labels=c("Meets Requirements","Doesn't Meet Requirements"))) %>%
+  group_by(CreditPolicy, NotFullyPaid, Dti) %>%
+  dplyr::select(CreditPolicy, NotFullyPaid, Dti)
+
+```
+```{r}
+# Creating a grid histogram plot relating to CreditPolicy, NotFullyPaid, and Debt to Income Ratio
+payback %>%
+ggplot(mapping=aes(x=Dti)) +
+  geom_histogram(bins=150) +
+  facet_grid(NotFullyPaid ~ CreditPolicy) +
+  labs(title="Figure 1", x="Debt To Income Ratio",y="Count") +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+_________________________________________________________________________________________________________________
+
+## Table 1
+```{r}
+# Creating a table of the summarized results of Figure 1
+pb <- payback %>%
+  group_by(CreditPolicy, NotFullyPaid) %>%
+  summarise(mean_dti=mean(Dti), sd_dti=sd(Dti), total=n()) %>%
+  dplyr::select(CreditPolicy, NotFullyPaid, mean_dti, sd_dti,total)
+pb
+```
+```{r}
+# Creating a data table out of CreditPolicy, NotFullyPaid, Credit Score, and Interest Rate
+score <- loans_df %>%
+         dplyr::select(CreditPolicy, NotFullyPaid, Fico, IntRate)
+```
+
+
+```{r}
+# Creating a scatter plot of the Credit Score against the Interest Rate
+score %>% ggplot(mapping=aes(x=Fico, y=IntRate)) +
+  geom_point(color='blue') +
+  facet_wrap(~ NotFullyPaid) +
+  labs(title="Figure 2", x="FICO Credit Score", y="Interest Rate") +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+_________________________________________________________________________________________________________________
+
+## Table 2
+```{r}
+# Creating a table summarizing the average Credit Score and the average Interest Rate
+score %>%
+  mutate(CreditPolicy=factor(CreditPolicy, levels=c(1, 0), labels=c("Meets Criteria","Does not meet Criteria"))) %>%
+  group_by(CreditPolicy, NotFullyPaid) %>%
+  summarise(avg_fico_score = mean(Fico), avg_interest_rate=mean(IntRate))
+
+```
+
+```{r}
+# Creating a sub table based on delinquency and credit purpose
+deal <- loans_df  %>%
+        dplyr::select(NotFullyPaid, Delinq2yrs, Purpose)
+```
+```{r}
+# Creating a summary table off of delinquency and credit purpose
+delinq <- deal %>%
+  group_by(NotFullyPaid, Delinq2yrs, Purpose) %>%
+  summarise(total=n())
+```
+```{r warning = FALSE}
+# Creating a grid boxplot chart based on credit purpose, delinquency, and NotFullyPaid
+delinq %>%
+  ggplot(mapping=aes(x=Delinq2yrs, y=total, fill=NotFullyPaid)) +
+  geom_boxplot() +
+  scale_x_log10() +
+  scale_y_log10() +
+  facet_wrap(~ Purpose) +
+  labs(title="Figure 3", x="Delinquency on Payment", y="Total Count of Delinquency") +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+_________________________________________________________________________________________________________________________________
+
+## Table 3
+```{r}
+# Creating a summary table for the average total customers based on delinquency
+delinq %>%
+  group_by(NotFullyPaid, Purpose) %>%
+  dplyr::select(NotFullyPaid, Purpose, total) %>%
+  summarise(avg_customers=mean(total))
+```
+## Machine Learning Models
+
+### Train/Test Split
+```{r}
+# Set seed to G number
+set.seed(00800533)
+
+# Split the data into training and testing sets
+loans_split <- initial_split(loans_df, prop=0.75, strata=NotFullyPaid)
+
+# Data splitting into training and testing data frames
+loans_training <- loans_split %>% training()
+loans_testing <- loans_split %>% testing()
+
+```
+
+### Cross-Validation
+```{r}
+# Set seed to G number
+set.seed(00800533)
+
+# Create a cross validation set
+loan_folds <- vfold_cv(loans_df, v=5)
+loan_folds
+```
+### Feature Engineering
+```{r}
+# Creating a recipe for our feature engineering section, this will be inputted into all of the classification models
+loans_recipe <- recipe(NotFullyPaid ~ ., data=loans_training) %>%
+  step_YeoJohnson(all_numeric(), -all_outcomes()) %>%
+  step_normalize(all_numeric(), -all_outcomes()) %>%
+  step_dummy(all_nominal(), -all_outcomes()) %>%
+  step_smote(NotFullyPaid,over_ratio = 1)
+loans_recipe
+```
+### Check Transformations
+```{r}
+# Prep and bake training dataframe
+loans_recipe %>%
+  prep() %>%
+  bake(new_data=loans_training)
+```
+## Confusion Matrix Analytic Functions
+```{r}
+# Calculates the specificity from the confusion matrix
+SPECIFICITY <- function(x) {
+  H <- x$table
+  TP <- H[1]
+  FN <- H[2]
+  FP <- H[3]
+  TN <- H[4]
+  return(TN/(TN + FP))
+}
+
+# Calculates the sensitivity from the confusion matrix
+SENSITIVITY <- function(x) {
+  H <- x$table
+  TP <- H[1]
+  FN <- H[2]
+  FP <- H[3]
+  TN <- H[4]
+  return(TP/(TP+FN))
+}
+
+# Calculates the precision from the confusion matrix
+PRECISION <- function(x) {
+  H <- x$table
+  TP <- H[1]
+  FN <- H[2]
+  FP <- H[3]
+  TN <- H[4]
+  return(TP/(TP+FP))
+}
+
+
+```
+
+
+
+## Logistic Regression Model
+
+### Specify Logistic Regression Model
+```{r}
+logistic_model <- logistic_reg() %>%
+                  set_engine('glm') %>%
+                  set_mode('classification')
+
+logistic_model
+```
+### Create a Logistic Regression Workflow
+```{r}
+logistic_wf <- workflow() %>%
+               add_model(logistic_model) %>%
+               add_recipe(loans_recipe)
+
+logistic_wf
+```
+### Fit Logistic Regression Model
+```{r}
+logistic_fit <- logistic_wf %>%
+                fit(data=loans_training)
+logistic_fit
+```
+
+### Logistic Regression VIP Graph
+```{r}
+lg_fit <- logistic_fit %>% pull_workflow_fit()
+vip(lg_fit)
+```
+
+
+
+### Logistic Regression Predictions
+```{r}
+pred_categories <- predict(logistic_fit, new_data=loans_testing)
+pred_probabilities <- predict(logistic_fit, new_data=loans_testing, type='prob')
+logistic_results <- loans_testing %>%
+                    dplyr::select(NotFullyPaid) %>%
+                    bind_cols(pred_categories) %>%
+                    bind_cols(pred_probabilities)
+logistic_results
+```
+### Logistic Regression ROC Curve Plot
+```{r}
+roc_logreg <- roc_curve(logistic_results, truth=NotFullyPaid, estimate=.pred_No)
+roc_logreg %>% autoplot()
+```
+
+### Logistic Regression ROC AUC
+```{r}
+roc_auc(logistic_results, truth=NotFullyPaid, .pred_No)
+```
+
+### Logistic Regression Confusion Matrix
+```{r}
+logreg_cf <- conf_mat(logistic_results, truth=NotFullyPaid, estimate=.pred_class)
+print(logreg_cf)
+```
+
+### Logistic Regression Confusion Matrix Metrics
+```{r}
+cat("Precision: ", PRECISION(logreg_cf), "\n")
+cat("Sensitivity: ", SENSITIVITY(logreg_cf), "\n")
+cat("Specificity: ", SPECIFICITY(logreg_cf), "\n")
+```
+
+### Logistic Regression F1-Score
+```{r}
+f_meas(logistic_results, truth=NotFullyPaid, estimate=.pred_class)
+```
+
+
+## QDA Model
+
+### Specify QDA Model
+```{r}
+qda_model <- discrim_regularized(frac_common_cov = 0) %>%
+             set_engine('klaR') %>%
+             set_mode('classification')
+
+qda_model
+```
+
+### Create QDA Workflow
+```{r}
+qda_wf <- workflow() %>%
+          add_model(qda_model) %>%
+          add_recipe(loans_recipe)
+qda_wf
+```
+
+### Fit QDA Model
+```{r}
+qda_fit <- qda_wf %>%
+           last_fit(split=loans_split)
+qda_fit
+```
+
+
+
+### Collect QDA Predictions
+```{r}
+qda_results <- qda_fit %>% collect_predictions()
+qda_results
+```
+
+### QDA ROC Curve
+```{r}
+qda_results %>%
+  roc_curve(truth=NotFullyPaid, estimate=.pred_No) %>%
+  autoplot()
+```
+
+### QDA ROC-AUC Area Underneath Curve
+```{r}
+roc_auc(qda_results, truth=NotFullyPaid, .pred_No)
+```
+
+### QDA Confusion Matrix
+```{r}
+qda_cf_matrix <- conf_mat(qda_results, truth=NotFullyPaid, .pred_class)
+qda_cf_matrix
+```
+### QDA Confusion Matrix Metrics
+```{r}
+cat("Precision: ", PRECISION(qda_cf_matrix), "\n")
+cat("Sensitivity: ", SENSITIVITY(qda_cf_matrix), "\n")
+cat("Specificity: ", SPECIFICITY(qda_cf_matrix), "\n")
+```
+
+
+### QDA F1-Score
+```{r}
+f_meas(qda_results, truth=NotFullyPaid, estimate=.pred_class)
+```
+
+
+## KNN Model
+
+### Specify KNN Model
+```{r}
+knn_model <- nearest_neighbor(neighbors = tune()) %>%
+             set_engine('kknn') %>%
+             set_mode('classification')
+knn_model
+```
+
+### Create KNN Workflow
+```{r}
+knn_wf <- workflow() %>%
+          add_model(knn_model) %>%
+          add_recipe(loans_recipe)
+knn_wf
+```
+
+### Tune KNN Hyperparameters
+```{r}
+gridTune <- c(10,15,25,45,60)
+
+set.seed(00800533)
+
+knn_tuning <- knn_wf %>%
+              tune_grid(resamples=loan_folds, grid=gridTune)
+
+knn_tuning
+```
+
+### Select Best KNN Model
+```{r}
+best_k <- knn_tuning %>%
+          select_best(metric='roc_auc')
+
+best_k
+```
+
+
+### Finalize KNN Workflow
+```{r}
+final_knn_wf <- knn_wf %>%
+                finalize_workflow(best_k)
+
+final_knn_wf
+```
+
+
+### Fit KNN Model
+```{r}
+knn_fit <- final_knn_wf %>%
+           last_fit(split=loans_split)
+
+knn_fit
+```
+
+
+### Collect KNN Predictions
+```{r}
+knn_results <- knn_fit %>% collect_predictions()
+knn_results
+```
+
+
+### KNN ROC Curve
+```{r}
+knn_results %>%
+  roc_curve(truth=NotFullyPaid, estimate=.pred_No) %>% autoplot()
+```
+
+
+### KNN ROC AUC Area Under Curve
+```{r}
+roc_auc(knn_results, truth=NotFullyPaid, .pred_No)
+```
+
+### KNN Confusion Matrix
+```{r}
+knn_cf_mat <- conf_mat(knn_results, truth=NotFullyPaid, estimate=.pred_class)
+knn_cf_mat
+
+```
+### KNN Confusion Matrix Metrics
+```{r}
+cat("Precision: ", PRECISION(knn_cf_mat), "\n")
+cat("Sensitivity: ", SENSITIVITY(knn_cf_mat), "\n")
+cat("Specificity: ", SPECIFICITY(knn_cf_mat), "\n")
+```
+
+### KNN F1-Score
+```{r}
+f_meas(knn_results, truth=NotFullyPaid, estimate=.pred_class)
+```
+
+
+--- End of the Project ---
