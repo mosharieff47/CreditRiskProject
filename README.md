@@ -2,6 +2,8 @@
 
 In this report, I was tasked with finding the best variables to measure ones ability to pay off or not pay off their loans. I used three machine learning algorithms: Logistic Regression, Quadratic Discriminant Analysis, and KNN Nearest Neighbors. Since I was given a larger dataset, I concluded that the Logistic Regression was the best algorithm to use in finding the best predictors. I am thankful to have finished well in this class as I earned an A+. I hope you enjoy viewing my report.
 
+## Live Demo
+https://youtu.be/BfVDri3QvCY?feature=shared
 
 ## Boxplot
 
